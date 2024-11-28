@@ -54,12 +54,16 @@ body.dark-mode .loader {
     100%   {background-position: 0%  200%,50%  200%,100%  200%}
   }
 
+.markdown {
+    max-width: 100%;
+}
+
   .markdown pre {
     background-color: #f7f7f7;
     padding: 10px;
     border-radius: 5px;
     overflow-x: auto;
-    margin: 10px 0;
+    margin: 20px 0;
 }
 
 .markdown code {

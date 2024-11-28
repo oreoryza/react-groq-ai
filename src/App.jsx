@@ -17,6 +17,29 @@ function App() {
   const theme = useSelector((state) => state.theme.theme);
   const [showModal, setShowModal] = useState(false);
 
+  useEffect(() => {
+    if (messages.length === 0) {
+      dispatch(resetMessages());
+      dispatch(getMessage());
+    }
+  }, [dispatch]);
+
+  // auto scroll to new message
+  useEffect(() => {
+    if (endPage.current) {
+      endPage.current.scrollIntoView({ behavior: "smooth" });
+    }
+  }, [messages]);
+
+  // dark mode
+  useEffect(() => {
+    if (theme === "dark") {
+      document.body.classList.add("dark-mode");
+    } else {
+      document.body.classList.remove("dark-mode");
+    }
+  }, [theme]);
+
   // input change with dompurify
   const handleChange = (e) => {
     setInput(DOMPurify.sanitize(e.target.value));
@@ -35,22 +58,6 @@ function App() {
     dispatch(resetMessages());
     setShowModal(false);
   };
-
-  // auto scroll to new message
-  useEffect(() => {
-    if (endPage.current) {
-      endPage.current.scrollIntoView({ behavior: "smooth" });
-    }
-  }, [messages]);
-
-  // dark mode
-  useEffect(() => {
-    if (theme === "dark") {
-      document.body.classList.add("dark-mode");
-    } else {
-      document.body.classList.remove("dark-mode");
-    }
-  }, [theme]);
 
   return (
     <>
