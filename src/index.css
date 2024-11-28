@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body.dark-mode {
+    background-color: #1a202c;
+    color: #fff;
+}
+
+body.dark-mode nav {
+    background-color: #1a202c;
+    color: #fff;
+}
+
+body.dark-mode .btn-cstm {
+    background-color: #2d3748;
+}
+
+body.dark-mode .input-cstm {
+    background-color: #2d3748;
+}
+
+body.dark-mode .input-container {
+    background-color: #1a202c;
+}
+
+.loader-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+body.dark-mode .loader {
+  --_g: no-repeat radial-gradient(farthest-side,#ffffff 90%, #1a202c);
+}
+
+.loader {
+    width: 60px;
+    aspect-ratio: 1;
+    --_g: no-repeat radial-gradient(farthest-side,#000 90%,#0000);
+    background: var(--_g), var(--_g), var(--_g);
+    background-size: 25% 25%;
+    animation: l17 1.5s infinite;
+  }
+  @keyframes l17{ 
+    0%     {background-position: 0% -100%,50% -100%,100% -100%}
+    16.67% {background-position: 0%   50%,50% -100%,100% -100%}
+    33.33% {background-position: 0%   50%,50%   50%,100% -100%}
+    45%,55%{background-position: 0%   50%,50%   50%,100%   50%}
+    66.67% {background-position: 0%  200%,50%   50%,100%   50%}
+    83.33% {background-position: 0%  200%,50%  200%,100%   50%}
+    100%   {background-position: 0%  200%,50%  200%,100%  200%}
+  }
+
+  .markdown pre {
+    background-color: #f7f7f7;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+    margin: 10px 0;
+}
+
+.markdown code {
+    background-color: #f7f7f7;
+    padding: 2px 4px;
+    border-radius: 3px;
+}
+
+body.dark-mode .markdown pre {
+    color: #1a202c;
+    background-color: #d2d2d2;
+}
+
+body.dark-mode .markdown code {
+    color: #1a202c;
+    background-color: #d2d2d2;
+}
+
+.gradient {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.modal-cstm {
+
+}
+
+body.dark-mode .modal-cstm {
+    background-color: #1a202c;
+}
