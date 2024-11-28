@@ -7,6 +7,7 @@ import { RiTailwindCssFill } from "react-icons/ri";
 
 const ChatInput = ({ onSubmit, inputMessage, onChange, onClick }) => {
   const isEmpty = useSelector((state) => state.groq.isEmpty);
+
   return (
     <div className={`${isEmpty ? "static" : "fixed bottom-0"} w-full`}>
       <div
@@ -70,6 +71,7 @@ const ChatInput = ({ onSubmit, inputMessage, onChange, onClick }) => {
             Groq
           </a>
         </p>
+        {/* tools hidden */}
         {isEmpty && (
           <>
             <p className="mt-4 opacity-50">Tools:</p>

@@ -8,37 +8,42 @@ import { getMessage, resetMessages } from "./redux/async/groqSlice";
 import DOMPurify from "dompurify";
 
 function App() {
-  const endPage = useRef(null);
+  const endPage = useRef(null); //auto scroll to new message
 
+  const dispatch = useDispatch();
   const [input, setInput] = useState("");
   const { messages, loading } = useSelector((state) => state.groq);
+  
   const theme = useSelector((state) => state.theme.theme);
-  const dispatch = useDispatch();
-
   const [showModal, setShowModal] = useState(false);
 
+  // input change with dompurify
   const handleChange = (e) => {
     setInput(DOMPurify.sanitize(e.target.value));
   };
 
+  // submit
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(getMessage(input));
     setInput("");
   };
 
+  // reset messages local and state
   const handleReset = () => {
     localStorage.setItem("messages", JSON.stringify([]));
     dispatch(resetMessages());
     setShowModal(false);
   };
 
+  // auto scroll to new message
   useEffect(() => {
     if (endPage.current) {
       endPage.current.scrollIntoView({ behavior: "smooth" });
     }
   }, [messages]);
 
+  // dark mode
   useEffect(() => {
     if (theme === "dark") {
       document.body.classList.add("dark-mode");

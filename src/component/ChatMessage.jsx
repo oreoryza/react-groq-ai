@@ -25,14 +25,14 @@ const ChatMessage = ({ message, inputMessage }) => {
         <div className="markdown">
           {isAnimating ? (
             <TypeAnimation
-              sequence={[message, 2000]} // Tampilkan pesan dengan animasi
-              speed={90} // Kecepatan pengetikan
-              repeat={0} // Tidak mengulang
-              style={{ display: "inline" }} // Pastikan tipe animasi inline
-              onComplete={() => setIsAnimating(false)} // Set animasi selesai
+              sequence={[message, 1000]} // show the message and wait for 1 second
+              speed={90}
+              repeat={0}
+              style={{ display: "inline" }}
+              onComplete={() => setIsAnimating(false)}
             />
           ) : (
-            <Markdown className={"leading-loose"}>{message}</Markdown> // Render markdown setelah animasi
+            <Markdown className={"leading-loose"}>{message}</Markdown> // Render markdown after animation over
           )}
         </div>
       </div>

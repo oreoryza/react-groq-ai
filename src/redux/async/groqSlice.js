@@ -3,17 +3,20 @@ import Groq from "groq-sdk";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
 
+//create new groq instance
 const groq = new Groq({
   apiKey: API_KEY,
   dangerouslyAllowBrowser: true,
 });
 
+//async thunk to get message from groq
 export const getMessage = createAsyncThunk(
   "groq/message",
   async (content, { getState }) => {
     const state = getState();
     const messages = state.groq.messages;
 
+    //take previous messages and add them to the request
     const previousMessages = messages.map((msg) => ({
       role: "user",
       content: msg.user,
@@ -37,10 +40,12 @@ export const getMessage = createAsyncThunk(
   }
 );
 
+//async thunk to reset messages
 export const resetMessages = createAsyncThunk("groq/reset", async () => {
   return [];
 });
 
+//initial state
 const initialState = {
   messages: [],
   loading: false,
@@ -55,6 +60,7 @@ const groqSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+    //geting message
       .addCase(getMessage.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -72,6 +78,7 @@ const groqSlice = createSlice({
           action.error.message
         );
       })
+      //reset messages
       .addCase(resetMessages.fulfilled, (state, action) => {
         state.messages = action.payload;
         state.loading = false;

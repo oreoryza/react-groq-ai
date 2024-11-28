@@ -27,6 +27,7 @@ const Navbar = () => {
         </div>
       </div>
       <div className="flex items-center gap-4">
+        {/* Tools hidden */}
         {!isEmpty && (
           <div className="relative group flex items-center w-40 justify-end">
             <div className="absolute hidden group-hover:flex left-0 w-4 h-4 rounded-md items-center justify-start gap-2">
